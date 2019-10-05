@@ -21,6 +21,7 @@ namespace Polish_Worder
     public partial class MainWindow : Window
     {
         private readonly string WordInputBoxDefaultText;
+        private Button ActiveButton;
 
         public MainWindow()
         {
@@ -47,6 +48,55 @@ namespace Polish_Worder
         }
 
         private void Anagram_Click(object sender, RoutedEventArgs e)
+        {
+            MakeButtonActive(sender);
+            MakeButtonInactive(Palindrome);
+            ActiveButton = (Button)sender;
+        }
+
+        private void Palindrome_Click(object sender, RoutedEventArgs e)
+        {
+            MakeButtonActive(sender);
+            MakeButtonInactive(Anagram);
+            ActiveButton = (Button)sender;
+        }
+
+        private void MakeButtonActive(object sender)
+        {
+            Button button = sender as Button;
+            button.Background = Brushes.DarkGreen;
+            button.FontWeight = FontWeights.Bold;
+            button.BorderThickness = new Thickness(5);
+            button.IsEnabled = false;
+        }
+
+        private void MakeButtonInactive(object sender)
+        {
+            Button button = sender as Button;
+            button.Background = Brushes.LightGray;
+            button.FontWeight = default(FontWeight);
+            button.BorderThickness = new Thickness(1);
+            button.IsEnabled = true;
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(ActiveButton == Anagram)
+            {
+                FindAnagrams();
+            }
+            else if(ActiveButton == Palindrome)
+            {
+                FindPalandroms();
+            }
+        }
+
+        private void FindAnagrams()
+        {
+
+        }
+
+        private void FindPalandroms()
         {
 
         }
