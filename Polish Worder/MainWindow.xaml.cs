@@ -27,6 +27,8 @@ namespace Polish_Worder
         {
             InitializeComponent();
             WordInputBoxDefaultText = WordInputBox.Text;
+            DictionaryManager dm = new DictionaryManager();
+            dm.DownloadDictionary();
         }
 
         private void UserInput_LostFocus(object sender, RoutedEventArgs e)
@@ -52,6 +54,7 @@ namespace Polish_Worder
             MakeButtonActive(sender);
             MakeButtonInactive(Palindrome);
             ActiveButton = (Button)sender;
+            SearchButton.IsEnabled = true;
         }
 
         private void Palindrome_Click(object sender, RoutedEventArgs e)
@@ -59,6 +62,7 @@ namespace Polish_Worder
             MakeButtonActive(sender);
             MakeButtonInactive(Anagram);
             ActiveButton = (Button)sender;
+            SearchButton.IsEnabled = true;
         }
 
         private void MakeButtonActive(object sender)
@@ -81,24 +85,24 @@ namespace Polish_Worder
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
+            MatchWordPatterns match = new MatchWordPatterns();
+            if (WordInputBox.Text == string.Empty)
+                return;
+            WordInputBox.Text = WordInputBox.Text.Trim();
             if(ActiveButton == Anagram)
             {
-                FindAnagrams();
+                match.FindAnagrams(WordInputBox.Text.ToString());
             }
             else if(ActiveButton == Palindrome)
             {
-                FindPalandroms();
+                match.FindPalindromes(WordInputBox.Text.ToString());
             }
         }
 
-        private void FindAnagrams()
+        private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void FindPalandroms()
-        {
-
+            FoundWords.Text = "Anagram - write the word to find all its anagrams. \n\n" +
+                "Palindrome - write first letters of the word and the program will find all palindromes strating from these letters.";
         }
     }
 }
