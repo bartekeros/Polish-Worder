@@ -20,9 +20,35 @@ namespace Polish_Worder
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly string WordInputBoxDefaultText;
+
         public MainWindow()
         {
             InitializeComponent();
+            WordInputBoxDefaultText = WordInputBox.Text;
+        }
+
+        private void UserInput_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(WordInputBox.Text))
+            {
+                WordInputBox.Foreground = Brushes.Gray;
+                WordInputBox.Text = WordInputBoxDefaultText;
+            }
+        }
+
+        private void MarkedText_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (WordInputBox.Text == WordInputBoxDefaultText)
+            {
+                WordInputBox.Text = string.Empty;
+                WordInputBox.Foreground = Brushes.Black;
+            }
+        }
+
+        private void Anagram_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
