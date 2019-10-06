@@ -98,8 +98,10 @@ namespace Polish_Worder
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
         {
-            FoundWords.Text = "Anagram - write the word to find all its anagrams. \n\n" +
-                "Palindrome - write first letters of the word and the program will find all palindromes strating from these letters.";
+            FoundWords.Text = "Anagram - write the word to find all its anagrams.\n\n" +
+                "Palindrome - write first letters of the word and the program will find all palindromes strating from these letters.\n\n" +
+                "author: Bartosz Warchoł\nlicense: GNU GPL";
+            WordCountBox.Text = string.Empty;
         }
     }
 }

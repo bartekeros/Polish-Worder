@@ -11,8 +11,8 @@
         <Button Name="Anagram" Content="Anagram" Click="Anagram_Click" HorizontalAlignment="Left" Margin="100,55,0,0" VerticalAlignment="Top" Width="295" Height="40" FontSize="25"/>
         <Button Name="Palindrome" Content="Palindrome" Click="Palindrome_Click" HorizontalAlignment="Left" Margin="400,55,0,0" VerticalAlignment="Top" Width="300" Height="40" FontSize="25"/>
         <Button Name="SearchButton" Content="Search" Click="SearchButton_Click" HorizontalAlignment="Left" Margin="100,100,0,0" VerticalAlignment="Top" Width="600" Height="50" FontSize="25" FontWeight="Bold" IsEnabled="False"/>
-        <TextBox Name="WordCountBox" HorizontalAlignment="Left" Height="35" Margin="400,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" TextAlignment="Center" FontSize="22"/>
-        <TextBox Name="FoundWords" HorizontalAlignment="Left" Height="200" Margin="100,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="600" FontSize="16"/>
+        <TextBox Name="WordCountBox" HorizontalAlignment="Left" Height="35" Margin="400,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" TextAlignment="Center" FontSize="22" IsReadOnly="True"/>
+        <TextBox Name="FoundWords" HorizontalAlignment="Left" Height="200" Margin="100,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="600" FontSize="16" IsReadOnly="True"/>
         <Label Name="MatchingWords" Content="Matching words:" HorizontalAlignment="Left" Margin="100,170,0,0" VerticalAlignment="Top" Width="295" Height="35" FontSize="20"/>
         <Button Name="InfoButton" Content="Info" Click="InfoButton_Click" HorizontalAlignment="Left" Margin="707,10,0,0" VerticalAlignment="Top" Width="75" Height="40" FontSize="25" FontWeight="Medium"/>
     </Grid>
