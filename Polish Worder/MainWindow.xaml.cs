@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Polish_Worder
 {
@@ -86,7 +77,7 @@ namespace Polish_Worder
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             MatchWordPatterns match = new MatchWordPatterns();
-            if (WordInputBox.Text == string.Empty)
+            if (WordInputBox.Text == string.Empty || WordInputBox.Text == WordInputBoxDefaultText)
                 return;
             WordInputBox.Text = WordInputBox.Text.Trim();
             if(ActiveButton == Anagram)
@@ -97,6 +88,7 @@ namespace Polish_Worder
             {
                 match.FindPalindromes(WordInputBox.Text.ToString());
             }
+            FoundWords.Text = string.Join(" ", match.MatchingWords);
         }
 
         private void InfoButton_Click(object sender, RoutedEventArgs e)
