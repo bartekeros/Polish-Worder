@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -77,17 +78,21 @@ namespace Polish_Worder
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             MatchWordPatterns match = new MatchWordPatterns();
-            if (WordInputBox.Text == string.Empty || WordInputBox.Text == WordInputBoxDefaultText)
+            if ((WordInputBox.Text == string.Empty || WordInputBox.Text == WordInputBoxDefaultText) && Palindrome.IsEnabled == true)
                 return;
-            WordInputBox.Text = WordInputBox.Text.Trim();
-            if(ActiveButton == Anagram)
+            else if (WordInputBox.Text == WordInputBoxDefaultText && Palindrome.IsEnabled == false)
+                WordInputBox.Text = string.Empty;
+            WordInputBox.Text = WordInputBox.Text.Trim().ToLower();
+            StreamReader sr = new StreamReader("odm.txt");
+            if (ActiveButton == Anagram)
             {
-                match.FindAnagrams(WordInputBox.Text.ToString());
+                match.FindAnagrams(WordInputBox.Text.ToString(), sr);
             }
             else if(ActiveButton == Palindrome)
             {
-                match.FindPalindromes(WordInputBox.Text.ToString());
+                match.FindPalindromes(WordInputBox.Text.ToString(), sr);
             }
+            WordCountBox.Text = (match.MatchingWords.Count == 1) ? match.MatchingWords.Count + " word was found" : match.MatchingWords.Count + " words was found";
             FoundWords.Text = string.Join(" ", match.MatchingWords);
         }
 

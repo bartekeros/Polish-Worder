@@ -36,9 +36,6 @@ namespace Polish_Worder
             char[] specialCharaktersThatSplitWords = { ',', ' ', '\r', '\n' };
 
             string file = File.ReadAllText(DictionaryName);
-            //string[] dictionaryEntries = file.Split(specialCharaktersThatSplitWords);
-            //dictionaryEntries = dictionaryEntries.Where(w => w != "").Select(s => s.ToLower()).ToArray();
-            //dictionaryEntries.Distinct();
 
             HashSet<string> dictionaryEntries = file.Split(specialCharaktersThatSplitWords).ToHashSet();
             dictionaryEntries = dictionaryEntries.Where(w => w != "" && !w.Contains("?")).Select(s => s.ToLower()).ToHashSet();
